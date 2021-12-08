@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc.dao.StudentMapper">
+
+    <!--学生注册-->
+    <insert id="addStudent" parameterType="student">
+        insert into reserve.student(sid, sname, grade, sphone, sex, spassword, classname, wechat, qq)
+        values (#{sid},#{sname},#{grade},#{sphone},#{sex},#{spassword},#{classname},#{wechat},#{qq});
+    </insert>
+
+</mapper>
