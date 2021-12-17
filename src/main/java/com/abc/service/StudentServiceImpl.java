@@ -14,4 +14,16 @@ public class StudentServiceImpl implements StudentService {
     public int addStudent(Student student) {
         return studentMapper.addStudent(student);
     }
+
+    public int updateStudent(Student student) {
+        return studentMapper.updateStudent(student);
+    }
+
+    public Student getStudentByPhone(String phone) {
+        return studentMapper.getStudentByPhone(phone);
+    }
+
+    public int updateStudentPwd(int sid,String spassword) {
+        return studentMapper.updateStudentPwd(sid,spassword);
+    }
 }

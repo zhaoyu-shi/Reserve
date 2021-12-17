@@ -1,0 +1,46 @@
+
+.time{
+
+    vertical-align: middle!important;/*文字上下居中*/
+    width: 25px;
+}
+.td_body{
+    vertical-align: middle!important;
+    height: 88px;
+}
+.time2{
+    vertical-align: middle!important;
+    width: 80px;
+}
+
+#padding_table>tbody>tr>td{
+    width: 160px;
+    /*padding: 0px;*/
+    margin: 0px;
+    font-weight: bolder;
+}
+.mybut{
+    border: 0px;
+    padding:0px;
+    margin: 0px;
+    width:143px;
+    height: 72px;
+    background-color: #FFFFFF;
+}
+.myheader{
+    padding-right: 50px;
+    background-color: #FFFFFF;
+}
+.result_but{
+    width: 66px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-right: 25px;
+
+
+}
+.success_but{
+    border: 0px;
+    background-color: #4ACA6D;
+}

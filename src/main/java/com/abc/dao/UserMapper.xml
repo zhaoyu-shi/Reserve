@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc.dao.UserMapper">
+
+    <!--增加窗口-->
+    <insert id="addWorker" parameterType="worker">
+        insert into reserve.worker(wid, wname, wphone, id)
+        values (#{wid},#{wname},#{wphone},#{id});
+    </insert>
+
+    <!--修改密码-->
+    <update id="updateStudentPwd">
+        update reserve.student
+        set spassword = #{spassword}
+        where sid=#{sid}
+    </update>
+    
+    <!--遍历窗口-->
+    <select id="getAllWorker" resultType="worker">
+        select *
+        from reserve.worker;
+    </select>
+
+    <!--删除窗口-->
+    <delete id="deleteWorker" parameterType="worker">
+        delete from reserve.worker where wid = #{wid}
+    </delete>
+
+    <!--根据wid查找-->
+    <select id="getWorkerById" resultType="worker">
+        select *
+        from reserve.worker where wid = #{wid};
+    </select>
+
+    <!--修改窗口信息-->
+    <update id="updateWorker" parameterType="worker">
+        update reserve.worker
+        set wid = #{wid}, wname = #{wname}, wpassword = #{wpassword}, wphone = #{wphone}
+        where id = #{id};
+    </update>
+
+    <!--遍历学生-->
+    <select id="getAllStudent" resultType="student">
+        select *
+        from reserve.student;
+    </select>
+    <!--根据id查学生-->
+    <select id="getStudentById" resultType="student">
+        select *
+        from reserve.student where sid = #{sid};
+    </select>
+    <!--删除学生-->
+    <delete id="deleteStudent" parameterType="student">
+        delete from reserve.student where sid = #{sid}
+    </delete>
+    <!--修改学生信息-->
+    <update id="updateStudent" parameterType="student">
+        update reserve.student
+        set sid = #{sid}, sname = #{sname}, grade = #{grade}, sphone = #{sphone}, sex = #{sex}, spassword = #{spassword}, classname = #{classname}, wechat = #{wechat}, qq = #{qq}, date = #{date}
+        where id = #{id};
+    </update>
+    <!--增加学生-->
+    <insert id="addStudent" parameterType="student">
+        insert into reserve.student(sid, sname, grade, sphone, sex, classname, wechat, qq, id)
+        values (#{sid},#{sname},#{grade},#{sphone},#{sex},#{classname},#{wechat},#{qq},#{id});
+    </insert>
+    
+    <!--遍历订单-->
+    <select id="getAllOrder" resultType="dishes">
+        select *
+        from reserve.dishes;
+    </select>
+    <!--根据id查订单-->
+    <select id="getDishesById" resultType="dishes">
+        select *
+        from reserve.dishes where did = #{did};
+    </select>
+    <!--删除订单-->
+    <delete id="deleteDishes" parameterType="dishes">
+        delete from reserve.dishes where did = #{did};
+    </delete>
+    <!--修改订单信息-->
+    <update id="updateDishes" parameterType="dishes">
+        update reserve.dishes
+        set dname = #{dname}, price = #{price}, wuid = #{wuid}, num = #{num}, suid = #{suid}
+        where did = #{did};
+    </update>
+    <!--增加订单-->
+    <insert id="addDishes" parameterType="dishes">
+        insert into reserve.dishes(did, dname, price, wuid, num, suid)
+        values (#{did},#{dname},#{price},#{wuid},#{num},#{suid});
+    </insert>
+</mapper>

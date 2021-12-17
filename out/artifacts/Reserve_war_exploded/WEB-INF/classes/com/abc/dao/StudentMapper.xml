@@ -6,8 +6,28 @@
 
     <!--学生注册-->
     <insert id="addStudent" parameterType="student">
-        insert into reserve.student(sid, sname, grade, sphone, sex, spassword, classname, wechat, qq)
-        values (#{sid},#{sname},#{grade},#{sphone},#{sex},#{spassword},#{classname},#{wechat},#{qq});
+        insert into reserve.student(sid, sname, grade, sphone, sex, spassword, classname, wechat, qq, id)
+        values (#{sid},#{sname},#{grade},#{sphone},#{sex},#{spassword},#{classname},#{wechat},#{qq},#{id});
     </insert>
 
+    <!--按照手机查-->
+    <select id="getStudentByPhone" resultType="student">
+        select *
+        from reserve.student
+        where sphone=#{phone};
+    </select>
+    
+    <!--更新个人信息-->
+    <update id="updateStudent" parameterType="student">
+        update reserve.student
+        set sid=#{sid},sname=#{sname},sex=#{sex},date=#{date},grade=#{grade},classname=#{classname},sphone=#{sphone},wechat=#{wechat},qq=#{qq}
+        where id=#{id}
+    </update>
+
+    <!--修改密码-->
+    <update id="updateStudentPwd">
+        update reserve.student
+        set spassword = #{spassword}
+        where sid=#{sid}
+    </update>
 </mapper>

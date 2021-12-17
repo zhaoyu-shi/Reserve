@@ -1,0 +1,45 @@
+.myheader{
+    text-align: left;
+    margin: auto;
+    font-size: 16px;
+    font-weight: bolder;
+    padding-right:13%;
+    padding-left:13%;
+}
+.myspan{
+    float: right;
+}
+.myleft{
+    float: left;
+    width: 500px;
+    height: 500px;
+    background-color: #F2F2F2;
+    padding-top: 80px;
+}
+.myimg{
+    width: 250px;
+    height: 250px;
+}
+.mymiddle{
+
+}
+
+.myright{
+    float: right;
+    width: 650px;
+    height: 500px;
+    background-color: #F2F2F2;
+    overflow:auto;
+}
+.timeDiv{
+    padding-top: 35px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.mytable{
+    margin: auto;
+    width: 80%;
+    background-color: #FFFFFF;
+
+}

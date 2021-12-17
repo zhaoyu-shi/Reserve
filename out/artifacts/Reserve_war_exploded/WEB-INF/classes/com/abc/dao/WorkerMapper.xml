@@ -4,6 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.abc.dao.WorkerMapper">
 
+    <!--按照手机查-->
+    <select id="getStudentByPhone" resultType="worker">
+        select *
+        from reserve.worker where wphone = #{phone};
+    </select>
 
+    <!--修改密码-->
+    <update id="updateWorkerPwd">
+        update reserve.worker
+        set wpassword = #{wpassword}
+        where wid=#{wid}
+    </update>
 
 </mapper>

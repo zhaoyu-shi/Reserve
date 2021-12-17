@@ -12,4 +12,5 @@ public class Worker {
     private String wname;
     private String wpassword;
     private String wphone;
+    private String id;
 }

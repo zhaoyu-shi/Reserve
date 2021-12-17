@@ -1,0 +1,32 @@
+.myleft{
+    padding-top: 35px;
+    float: left;
+    width: 700px;
+    height: 500px;
+    /*background-color: #000;*/
+}
+.form-group{
+    padding-bottom: 50px;
+    padding-right: 8%;
+    padding-left: 30px;
+}
+.myheader{
+    padding-right: 50px;
+    background-color: #FFFFFF;
+}
+.result_but{
+    width: 66px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-right: 25px;
+
+
+}
+.success_but{
+    border: 0px;
+    background-color: #4ACA6D;
+}
+.myform-group{
+    margin-bottom: 18px;
+}

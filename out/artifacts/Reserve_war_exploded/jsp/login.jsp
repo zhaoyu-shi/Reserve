@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <link rel="icon" href="https://zhaoyushi.oss-cn-beijing.aliyuncs.com/img/IMG_2347(20210227-020611).JPG">
     <style type="text/css">
         /*表单样式*/
         /*    .myformdiv {
@@ -43,7 +43,7 @@
 </head>
 <body>
 <div class="text-center">
-    <div class="bg-primary"><br><h1>实验室管理员工作平台<small id="small">&emsp;&emsp;安阳师范学院&ensp;•&ensp;软件学院</small></h1><br></div>
+    <div class="bg-primary"><br><h1>餐厅预约管理平台<small id="small">&emsp;&emsp;安阳师范学院&ensp;•&ensp;软件学院</small></h1><br></div>
 </div>
 
 
@@ -63,12 +63,12 @@
         <div class="col-xs-6 col-md-4 col-center-block myformdiv ">
             <form role="form" action="/student/login" method="post">
                 <div class="form-group">
-                    <p class="text-danger">${requestScope.prompt}</p>
+                    <p class="text-danger">${prompt}</p>
                 </div>
                 <div class="form-group">
-                    <label for="snumber">手机号:</label>
-                    <input type="text" class="form-control" id="snumber" name="snumber"
-                           placeholder="请输入" value="${requestScope.snumber}">
+                    <label for="phone">手机号:</label>
+                    <input type="text" class="form-control" id="phone" name="phone"
+                           placeholder="请输入">
                 </div>
                 <div class="form-group">
                     <label for="password">密码:</label>

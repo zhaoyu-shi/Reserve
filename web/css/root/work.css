@@ -1,0 +1,151 @@
+
+.time{
+
+    vertical-align: middle!important;/*文字上下居中*/
+    width: 25px;
+}
+.td_body{
+    vertical-align: middle!important;
+    height: 88px;
+}
+.time2{
+    vertical-align: middle!important;
+    width: 80px;
+}
+
+#padding_table>tbody>tr>td{
+    width: 160px;
+    /*padding: 0px;*/
+    margin: 0px;
+    font-weight: bolder;
+    position:relative;
+
+}
+.number{
+    position:absolute;
+    right:4px;
+    top:4px;
+    font-size: 15px;
+    font-weight: normal;
+    opacity:0.7;
+}
+
+.myheader{
+    padding-right: 50px;
+    background-color: #FFFFFF;
+}
+.result_but{
+    width: 66px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-right: 25px;
+
+
+}
+.success_but{
+    border: 0px;
+    background-color: #4ACA6D;
+}
+
+/*对td中div的内容进行样式修饰*/
+.td_div_left{
+
+
+}
+.td_div_right{
+
+}
+/*对弹出框进行样式编辑*/
+.modal-body{
+    padding-top: 10px;
+    width: 600px;
+    height: 350px;
+}
+.alert_body{
+    padding-top: 10px;
+    height: 300px;
+}
+.alert_body_left{
+    width: 270px;
+    height: 300px;
+    /*border: 1px dashed #000;*/
+    float: left;
+
+    background-color: #fff;
+}
+.alert_body_middle{
+    width:30px;
+    height: 300px;
+    float: left;
+    /*border: 1px dashed #000;*/
+}
+.alert_body_right{
+    width: 270px;
+    height: 300px;
+    /*border: 1px dashed #000;*/
+    float: right;
+
+    background-color: #fff;
+}
+.my_alert_li{
+    margin-left:4px;
+    list-style-type:none;
+}
+.head_left{
+    float: left;
+    padding-left: 8%;
+    padding-right: 50%;
+}
+/*.head_right{*/
+/*float: right;*/
+/*}*/
+
+
+.myulMiddle,.myulLeft,.myulRight{
+    overflow :auto;
+    width: 89px;
+    height: 233px;
+    float: left;
+    margin-bottom: 10px;
+}
+.modal-content{
+    width: 600px;
+}
+.list-group-item{
+    margin-left: 1px;
+    padding: 6px 10px;
+    text-align: center;
+}
+.list-group-header{
+    margin-bottom: 8px;
+}
+/*其实是div，当做button，但是需要里面存放标签*/
+.mybut{
+    cursor: pointer;
+    width:143px;
+    height: 77px;
+    background-color: #FFFFFF;
+    border: 0px;
+    padding:0px;
+    margin: 0px;
+    text-decoration:none;
+    overflow :auto;
+}
+.view_date_div{
+    text-align: center;
+    width: 50%;
+    font-size: 15px;
+    font-weight: normal;
+    float: left;
+}
+.list-group-header-left{
+    float: left;
+    width: 50%;
+    margin-bottom: 10px;
+}
+.list-group-header-right{
+    float: left;
+    width: 50%;
+    margin-bottom: 10px;
+}

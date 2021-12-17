@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>注册</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="https://zhaoyushi.oss-cn-beijing.aliyuncs.com/img/IMG_2347(20210227-020611).JPG">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
@@ -19,7 +20,7 @@
 </head>
 <body>
 <div class="text-center">
-    <div class="bg-primary"><br><h1>实验室管理员工作平台</h1><br></div>
+    <div class="bg-primary"><br><h1>餐厅预约管理平台</h1><br></div>
 
 </div>
 <br>   <br>
@@ -40,8 +41,8 @@
             <%--<p class="text-danger" id="info"></p>--%>
         </div>
         <div class="form-group">
-            <label for="snumber">学号:</label>
-            <input type="text" class="form-control" id="snumber" name="snumber"
+            <label for="sid">学号:</label>
+            <input type="text" class="form-control" id="sid" name="sid"
                    placeholder="请输入" required="required">
         </div>
         <div class="form-group">
@@ -50,13 +51,13 @@
                    placeholder="请输入" required="required">
         </div>
         <div class="form-group">
-            <label for="phone">手机号:</label>
-            <input type="text" class="form-control" id="phone" name="phone"
+            <label for="sphone">手机号:</label>
+            <input type="text" class="form-control" id="sphone" name="sphone"
                    placeholder="请输入" required="required">
         </div>
         <div class="form-group">
-            <label for="password">密码:</label>
-            <input type="password" class="form-control" id="password" name="password"
+            <label for="spassword">密码:</label>
+            <input type="password" class="form-control" id="spassword" name="spassword"
                    placeholder="请输入" required="required">
         </div>
         <div class="form-group">
@@ -85,7 +86,7 @@
     $("#newpassword").bind('input propertychange change', function() {
 
         var newpassword = $("#newpassword").val();
-        var password = $("#password").val();
+        var password = $("#spassword").val();
 
         if (newpassword != password){
             $("#info").text("两次密码不相同！");

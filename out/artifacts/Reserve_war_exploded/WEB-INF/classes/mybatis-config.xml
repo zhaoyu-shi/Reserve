@@ -10,9 +10,5 @@
         <package name="com.abc.pojo"/>
     </typeAliases>
 
-    <mappers>
-        <mapper class="com.abc.dao.StudentMapper"/>
-        <mapper class="com.abc.dao.WorkerMapper"/>
-    </mappers>
 
 </configuration>

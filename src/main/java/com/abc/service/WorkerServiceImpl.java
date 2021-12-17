@@ -10,5 +10,11 @@ public class WorkerServiceImpl implements WorkerService {
     @Autowired
     private WorkerMapper workerMapper;
 
+    public Worker getStudentByPhone(String phone) {
+        return workerMapper.getStudentByPhone(phone);
+    }
 
+    public int updateWorkerPwd(int wid, String wpassword) {
+        return workerMapper.updateWorkerPwd(wid,wpassword);
+    }
 }
