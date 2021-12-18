@@ -1,8 +1,6 @@
 package com.abc.controller;
 
-import com.abc.pojo.Student;
-import com.abc.pojo.Super;
-import com.abc.pojo.Worker;
+import com.abc.pojo.*;
 import com.abc.service.StudentService;
 import com.abc.service.UserService;
 import com.abc.service.WorkerService;
@@ -60,7 +58,7 @@ public class StudentController {
             }
 
         }else {
-            Worker workerByPhone = workerService.getStudentByPhone(phone);
+            Worker workerByPhone = workerService.getWorkerByPhone(phone);
             if (workerByPhone != null){
                 if (workerByPhone.getWpassword().equals(password)){
                     session.setAttribute("worker",workerByPhone);
@@ -104,6 +102,27 @@ public class StudentController {
     public String logout(HttpSession session){
         session.invalidate();
         return "login";
+    }
+
+    @RequestMapping("/find")
+    public String find(String sphone, HttpSession session){
+        Student studentByPhone = studentService.getStudentByPhone(sphone);
+        session.setAttribute("student",studentByPhone);
+        return "student/person";
+    }
+
+    @RequestMapping("/getAllMeal")
+    public String getAllMeal(HttpSession session){
+        List<Meal> allMeal = studentService.getAllMeal();
+        session.setAttribute("allMeal",allMeal);
+        return "student/allMeal";
+    }
+
+    @RequestMapping("/getStudentDishes")
+    public String getStudentDishes(int suid , HttpSession session){
+        List<Dishes> allStudentDishes = studentService.getAllStudentDishes(suid);
+        session.setAttribute("dishes",allStudentDishes);
+        return "student/dishes";
     }
 
 }

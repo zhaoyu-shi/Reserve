@@ -30,4 +30,15 @@
         set spassword = #{spassword}
         where sid=#{sid}
     </update>
+
+    <!--获取全部餐品-->
+    <select id="getAllMeal" resultType="meal">
+        select *
+        from reserve.meal;
+    </select>
+    <!--自己的订单-->
+    <select id="getAllStudentDishes" resultType="dishes">
+        select *
+        from reserve.dishes where suid = #{suid};
+    </select>
 </mapper>

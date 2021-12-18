@@ -5,7 +5,7 @@
 <mapper namespace="com.abc.dao.WorkerMapper">
 
     <!--按照手机查-->
-    <select id="getStudentByPhone" resultType="worker">
+    <select id="getWorkerByPhone" resultType="worker">
         select *
         from reserve.worker where wphone = #{phone};
     </select>
@@ -17,4 +17,39 @@
         where wid=#{wid}
     </update>
 
+    <!--上传餐品-->
+    <insert id="addMeal" parameterType="meal">
+        insert into reserve.meal(mid, mname, mprice, wmid)
+        values (#{mid},#{mname},#{mprice},#{wmid});
+    </insert>
+
+    <!--遍历餐品-->
+    <select id="getAllMeal" resultType="meal">
+        select *
+        from reserve.meal;
+    </select>
+
+    <!--修改餐品信息-->
+    <update id="updateMeal" parameterType="meal">
+        update reserve.meal
+        set mname = #{mname}, mprice = #{mprice}
+        where mid = #{mid};
+    </update>
+
+    <!--删除餐品-->
+    <delete id="deleteMeal" parameterType="meal">
+        delete from reserve.meal where mid = #{mid}
+    </delete>
+
+    <!--一个窗口的订单-->
+    <select id="getWorkerDishes" resultType="dishes">
+        select *
+        from reserve.dishes where wuid = #{wuid};
+    </select>
+
+    <!--mid查餐品-->
+    <select id="getMealById" resultType="meal">
+        select *
+        from reserve.meal where mid = #{mid};
+    </select>
 </mapper>

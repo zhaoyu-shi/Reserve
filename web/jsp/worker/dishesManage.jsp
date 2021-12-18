@@ -16,12 +16,15 @@
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link href="${pageContext.request.getContextPath()}/css/boot-crm.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="https://zhaoyushi.oss-cn-beijing.aliyuncs.com/img/IMG_2347(20210227-020611).JPG">
+    <script type="text/javascript" language="JavaScript1.2" src="${pageContext.request.getContextPath()}/js/util.js"></script>
     <link href="${pageContext.request.getContextPath()}/css/user/person.css" rel="stylesheet" />
-
+    <link rel="icon" href="https://zhaoyushi.oss-cn-beijing.aliyuncs.com/img/IMG_2347(20210227-020611).JPG">
+    <script type="text/javascript" language="JavaScript1.2" src="${pageContext.request.getContextPath()}/js/util.js"></script>
 </head>
 <body>
+
 <div id="wrapper">
+    <%-- <iframe id="ifarm" style="width:100% ;height: 100% ">--%>
     <!-- 导航栏部分 -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation"
          style="margin-bottom: 0">
@@ -40,7 +43,7 @@
                     <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-key fa-fw" ></i>修改密码</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#passwordModal"><i class="fa fa-key fa-fw" ></i>修改密码</a></li>
                     <li class="divider"></li>
                     <li>
                         <a href="${pageContext.request.contextPath}/student/logout">
@@ -67,7 +70,7 @@
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/worker/find?wphone=${worker.wphone}" class="active">
+                        <a href="${pageContext.request.getContextPath()}/worker/find?wphone=${worker.wphone}">
                             <i class="fa fa-fw fa-address-card-o" style="font-size:16px"></i> 个人信息
                         </a>
                     </li>
@@ -77,7 +80,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/worker/getWorkerDishes?wuid=${worker.wid}">
+                        <a href="${pageContext.request.getContextPath()}/worker/getWorkerDishes?wuid=${worker.wid}" class="active">
                             <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 订单查询
                         </a>
                     </li>
@@ -86,8 +89,6 @@
                             <i class="fa fa-calendar-check-o fa-fw" style="font-size:16px"></i> 联系我们
                         </a>
                     </li>
-
-
                 </ul>
                 <!-- 更多图标 可以访问https://www.runoob.com/font-awesome/fontawesome-icons-webapp.html-->
             </div>
@@ -95,58 +96,73 @@
         <!-- 左侧显示列表部分 end-->
     </nav>
     <!-- 客户列表查询部分  start-->
+
     <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">个人信息
-                    <div class="myheader" style="float:right;">
-                        <!-- <input type="button" value="保 存" id="myreset" class="result_but btn-link"> -->
-                        <input type="button" ONCLICK="xiugai()" value="保 存" class="result_but success_but">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="page-header">
+                        <h1>
+                            <small>餐品列表</small>
+                        </h1>
                     </div>
-                </h1>
-
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="panel panel-default">
-            <div class="panel-body">
-
-                <div class="myleft">
-                    <form class="form-inline" method="post" id="myform"
-                          action="${pageContext.request.contextPath}/worker/update">
-                        <input type="hidden" id="id" name="sid" value="${worker.wid}" />
-                        <div class="form-group">
-                            <label for="wname">姓名:</label>
-                            <input type="text" class="form-control" id="wname"
-                                   value="${worker.wname}" name="wname" />
-                        </div>
-                        <br>
-
-                        <div class="form-group">
-                            <label for="wid">窗口号:</label>
-                            <input type="text" class="form-control" id="wid"
-                                   value="${worker.wid}" name="wid" />
-                        </div>
-                        <br>
-
-                        <div class="form-group">
-                            <label for="customerName7">手机号:</label>
-                            <input type="text" class="form-control" id="customerName7"
-                                   value="${worker.wphone}" name="wphone" />
-                        </div>
-
-                        <!-- <button type="submit" class="btn btn-primary">查询</button> -->
-                    </form>
                 </div>
-                <div class="myright"></div>
+
+
 
             </div>
+
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>餐品</th>
+                            <th>价格</th>
+                            <th>数量</th>
+                            <th>学生学号</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="work" items="${workerDishes}">
+                            <tr class="text-center">
+                                <td>${work.dname}</td>
+                                <td>${work.price}</td>
+                                <td>${work.num}</td>
+                                <td>${work.suid}</td>
+
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
+    <%--</iframe>--%>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel1">联系我们</h4>
+            </div>
+            <div class="modal-body">请联系后台人员进行修改<br>邮箱：zhaoyushi00@gmail.com</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 <%--修改密码模拟框--%>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -177,21 +193,7 @@
         </div>
     </div>
 </div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel1">联系我们</h4>
-            </div>
-            <div class="modal-body">请联系后台人员进行修改<br>邮箱：zhaoyushi00@gmail.com</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
+
 <!-- 引入js文件 -->
 <!-- jQuery -->
 <script src="${pageContext.request.getContextPath()}/js/jquery-1.11.3.min.js"></script>
@@ -204,8 +206,5 @@
 <script src="${pageContext.request.getContextPath()}/js/dataTables.bootstrap.min.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="${pageContext.request.getContextPath()}/js/sb-admin-2.js"></script>
-<!-- 编写js代码 -->
-<script src="${pageContext.request.getContextPath()}/js/user/wperson.js" type="text/javascript"></script>
-
 </body>
 </html>
