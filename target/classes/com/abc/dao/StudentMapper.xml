@@ -30,4 +30,31 @@
         set spassword = #{spassword}
         where sid=#{sid}
     </update>
+
+    <!--获取全部餐品-->
+    <select id="getAllMeal" resultType="meal">
+        select *
+        from reserve.meal;
+    </select>
+    <!--自己的订单-->
+    <select id="getAllStudentDishes" resultType="dishes">
+        select *
+        from reserve.dishes where suid = #{suid} and state = 1;
+    </select>
+    <!--未完成-->
+    <select id="getStudentDishesing" resultType="dishes">
+        select *
+        from reserve.dishes where suid =#{suid} and state = 0;
+    </select>
+    <!--下单-->
+    <insert id="addDishes" parameterType="dishes">
+        insert into reserve.dishes(did, dname, price, wuid, num, suid)
+        values (#{did}, #{dname}, #{price}, #{wuid}, #{num}, #{suid});
+    </insert>
+    <!--改变状态-->
+    <update id="changeState" parameterType="dishes">
+        update reserve.dishes
+        set state = 1
+        where did = #{did};
+    </update>
 </mapper>

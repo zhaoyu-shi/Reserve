@@ -3,6 +3,7 @@ package com.abc.service;
 import com.abc.dao.UserMapper;
 import com.abc.pojo.Dishes;
 import com.abc.pojo.Student;
+import com.abc.pojo.Super;
 import com.abc.pojo.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
+    public Super getSuperById(String id) {
+        return userMapper.getSuperById(id);
+    }
 
     public int addWorker(Worker worker) { return userMapper.addWorker(worker); }
 

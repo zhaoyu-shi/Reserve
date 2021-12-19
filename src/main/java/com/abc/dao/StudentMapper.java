@@ -20,4 +20,10 @@ public interface StudentMapper {
     List<Meal> getAllMeal();
     //查看订单信息
     List<Dishes> getAllStudentDishes(int suid);
+    //未完成的订单
+    List<Dishes> getStudentDishesing(int suid);
+    //下单
+    int addDishes(Dishes dishes);
+    //改变订单状态
+    int changeState(String did);
 }

@@ -1,3 +1,4 @@
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -70,18 +71,23 @@
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/find?sid=${student.sid}">
+                        <a href="${pageContext.request.getContextPath()}/student/find" class="active">
                             <i class="fa fa-fw fa-address-card-o" style="font-size:16px"></i> 个人信息
                         </a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/getAllMeal"  class="active">
-                            <i class="fa fa-tachometer fa-fw" style="font-size:18px"></i> 查看餐品
+                        <a href="${pageContext.request.getContextPath()}/student/getAllMeal">
+                            <i class="fa fa-edit fa-fw" style="font-size:18px"></i> 预约菜品
+                        </a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.getContextPath()}/student/getStudentDishesing?suid=${student.sid}">
+                            <i class="fa fa-hand-stop-o" style="font-size:16px"></i> 未完成的订单
                         </a>
                     </li>
                     <li>
                         <a href="${pageContext.request.getContextPath()}/student/getStudentDishes?suid=${student.sid}">
-                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 订单查询
+                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 已完成的订单
                         </a>
                     </li>
                     <li>
@@ -105,14 +111,8 @@
                 <div class="col-md-12 column">
                     <div class="page-header">
                         <h1>
-                            <small>餐品列表</small>
+                            <small>我的订单</small>
                         </h1>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4 column">
-                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">增加</button>
                     </div>
                 </div>
 
@@ -125,22 +125,23 @@
                         <tr>
                             <th>餐品</th>
                             <th>价格</th>
-                            <th>其他</th>
+                            <th>数量</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="work" items="${allMeal}">
+<%--                        <%List list=(List)session.getAttribute("allDishes");--%>
+<%--                            System.out.println("size"+list.size());--%>
+<%--                            System.out.println("list"+list);--%>
+<%--                            session.setAttribute("dishes",list);--%>
+<%--                        %>--%>
+
+<%--                        ${dishes}--%>
+
+                        <c:forEach var="work" items="${dishes}">
                             <tr class="text-center">
-                                <td>${work.mname}</td>
-                                <td>${work.mprice}</td>
-                                <td>
-                                        <%--
-                                                                                <a href="${pageContext.request.contextPath}/user/toUpdateStu?sid=${work.sid}">更改</a>  |
-                                        --%>
-                                        <%--    <a href="#" onClick="javascript:windowOpen('/user/toUpdate?wid=${work.wid}','','',500,420,'no','yes','100','100')">修改</a> |--%>
-                                    <a href="${pageContext.request.contextPath}/worker/toUpdateMeal?mid=${work.mid}" data-toggle="modal" data-target="#xiu">更改</a> |
-                                    <a href="${pageContext.request.contextPath}/worker/deleteMeal?mid=${work.mid}">删除</a>
-                                </td>
+                                <td>${work.dname}</td>
+                                <td>${work.price}</td>
+                                <td>${work.num}</td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -153,31 +154,6 @@
     </div>
 
     <%--</iframe>--%>
-</div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="xiu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel2">
-                    模态框（Modal）标题
-                </h4>
-            </div>
-            <div class="modal-body">
-                ${workerById}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button type="button" class="btn btn-primary">
-                    提交更改
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
 </div>
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -195,40 +171,6 @@
     </div><!-- /.modal -->
 </div>
 
-<!-- 增加窗口模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">添加新餐品</h4>
-            </div>
-            <div class="modal-body">
-                <form method="get" action="/worker/upload">
-                    <p class="text-danger"></p>
-                    <div class="myform-group">
-                        <label class="control-label">餐品:</label>
-                        <input name="mname" required="required" type="text" class="form-control" placeholder="请输入" >
-                    </div>
-                    <div class="myform-group">
-                        <label  class="control-label">价格:</label>
-                        <input name="mprice" required="required" type="text" class="form-control" placeholder="请输入" >
-                    </div>
-                    <input type="hidden" name="wmid" value="${worker.wid}">
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="submit" class="btn btn-primary" onclick="add">提交</button>
-                    </div>
-                </form>
-
-            </div>
-
-
-
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 <%--修改密码模拟框--%>
 <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">

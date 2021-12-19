@@ -70,18 +70,23 @@
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/find?sid=${student.sid}">
+                        <a href="${pageContext.request.getContextPath()}/student/find" class="active">
                             <i class="fa fa-fw fa-address-card-o" style="font-size:16px"></i> 个人信息
                         </a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/getAllMeal"  class="active">
-                            <i class="fa fa-tachometer fa-fw" style="font-size:18px"></i> 查看餐品
+                        <a href="${pageContext.request.getContextPath()}/student/getAllMeal">
+                            <i class="fa fa-edit fa-fw" style="font-size:18px"></i> 预约菜品
+                        </a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.getContextPath()}/student/getStudentDishesing?suid=${student.sid}">
+                            <i class="fa fa-hand-stop-o" style="font-size:16px"></i> 未完成的订单
                         </a>
                     </li>
                     <li>
                         <a href="${pageContext.request.getContextPath()}/student/getStudentDishes?suid=${student.sid}">
-                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 订单查询
+                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 已完成的订单
                         </a>
                     </li>
                     <li>
@@ -112,7 +117,7 @@
 
                 <div class="row">
                     <div class="col-md-4 column">
-                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">增加</button>
+<%--                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">增加</button>--%>
                     </div>
                 </div>
 
@@ -136,8 +141,7 @@
                                 <td>${work.mname}</td>
                                 <td>${work.mprice}</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/worker/toUpdateMeal?mid=${work.mid}" data-toggle="modal" data-target="#xiu">更改</a> |
-                                    <a href="${pageContext.request.contextPath}/worker/deleteMeal?mid=${work.mid}">删除</a>
+                                    <a href="${pageContext.request.contextPath}/student/toOrder?mid=${work.mid}&suid=${student.sid}" data-toggle="modal" data-target="#xiu">下单</a>
                                 </td>
                             </tr>
                         </c:forEach>

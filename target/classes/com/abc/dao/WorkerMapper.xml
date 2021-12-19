@@ -41,10 +41,15 @@
         delete from reserve.meal where mid = #{mid}
     </delete>
 
-    <!--一个窗口的订单-->
+    <!--一个窗口已完成的订单-->
     <select id="getWorkerDishes" resultType="dishes">
         select *
-        from reserve.dishes where wuid = #{wuid};
+        from reserve.dishes where wuid = #{wuid} and state = 1;
+    </select>
+    <!--未完成-->
+    <select id="getWorkerDishesing" resultType="dishes">
+        select *
+        from reserve.dishes where wuid = #{wuid} and state = 0;
     </select>
 
     <!--mid查餐品-->

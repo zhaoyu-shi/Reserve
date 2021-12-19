@@ -38,5 +38,17 @@ public class StudentServiceImpl implements StudentService {
     public List<Dishes> getAllStudentDishes(int suid) {
         return studentMapper.getAllStudentDishes(suid);
     }
+
+    public int addDishes(Dishes dishes) {
+        return studentMapper.addDishes(dishes);
+    }
+
+    public List<Dishes> getStudentDishesing(int suid) {
+        return studentMapper.getStudentDishesing(suid);
+    }
+
+    public int changeState(String did) {
+        return studentMapper.changeState(did);
+    }
 }
 

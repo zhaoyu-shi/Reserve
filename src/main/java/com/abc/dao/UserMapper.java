@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserMapper {
+    //查找
+    Super getSuperById(String id);
+
     //遍历所有窗口
     List<Worker> getAllWorker();
     //根据wid查窗口

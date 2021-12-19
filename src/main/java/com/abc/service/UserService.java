@@ -2,12 +2,16 @@ package com.abc.service;
 
 import com.abc.pojo.Dishes;
 import com.abc.pojo.Student;
+import com.abc.pojo.Super;
 import com.abc.pojo.Worker;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface UserService {
+    //查找
+    Super getSuperById(String id);
+
     //增加窗口
     int addWorker(Worker worker);
     //遍历所有窗口

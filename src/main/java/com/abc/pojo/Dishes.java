@@ -14,4 +14,5 @@ public class Dishes {
     private int wuid;
     private int suid;
     private String num;
+    private int state;
 }

@@ -16,12 +16,15 @@
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link href="${pageContext.request.getContextPath()}/css/boot-crm.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="https://zhaoyushi.oss-cn-beijing.aliyuncs.com/img/IMG_2347(20210227-020611).JPG">
+    <script type="text/javascript" language="JavaScript1.2" src="${pageContext.request.getContextPath()}/js/util.js"></script>
     <link href="${pageContext.request.getContextPath()}/css/user/person.css" rel="stylesheet" />
-
+    <link rel="icon" href="https://zhaoyushi.oss-cn-beijing.aliyuncs.com/img/IMG_2347(20210227-020611).JPG">
+    <script type="text/javascript" language="JavaScript1.2" src="${pageContext.request.getContextPath()}/js/util.js"></script>
 </head>
 <body>
+
 <div id="wrapper">
+    <%-- <iframe id="ifarm" style="width:100% ;height: 100% ">--%>
     <!-- 导航栏部分 -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation"
          style="margin-bottom: 0">
@@ -36,11 +39,11 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 
                     <i class="fa fa-user-circle-o"></i>
-                    <i class="fa">${student.sname}</i>
+                    <i class="fa">${worker.wname}</i>
                     <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-key fa-fw" ></i>修改密码</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#passwordModal"><i class="fa fa-key fa-fw" ></i>修改密码</a></li>
                     <li class="divider"></li>
                     <li>
                         <a href="${pageContext.request.contextPath}/student/logout">
@@ -67,13 +70,13 @@
                     </li>
 
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/find" class="active">
+                        <a href="${pageContext.request.getContextPath()}/worker/find?wphone=${worker.wphone}">
                             <i class="fa fa-fw fa-address-card-o" style="font-size:16px"></i> 个人信息
                         </a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/getAllMeal">
-                            <i class="fa fa-edit fa-fw" style="font-size:18px"></i> 预约菜品
+                        <a href="${pageContext.request.getContextPath()}/worker/getAllMeal">
+                            <i class="fa fa-tachometer fa-fw" style="font-size:18px"></i> 查看餐品
                         </a>
                     </li>
                     <li>
@@ -82,8 +85,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/getStudentDishes?suid=${student.sid}">
-                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 已完成的订单
+                        <a href="${pageContext.request.getContextPath()}/worker/getWorkerDishes?wuid=${worker.wid}">
+                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 已完成订单查询
                         </a>
                     </li>
                     <li>
@@ -91,9 +94,6 @@
                             <i class="fa fa-calendar-check-o fa-fw" style="font-size:16px"></i> 联系我们
                         </a>
                     </li>
-
-
-
                 </ul>
                 <!-- 更多图标 可以访问https://www.runoob.com/font-awesome/fontawesome-icons-webapp.html-->
             </div>
@@ -101,94 +101,56 @@
         <!-- 左侧显示列表部分 end-->
     </nav>
     <!-- 客户列表查询部分  start-->
+
     <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">个人信息
-                    <div class="myheader" style="float:right;">
-                        <!-- <input type="button" value="保 存" id="myreset" class="result_but btn-link"> -->
-                        <input type="button" ONCLICK="xiugai()" value="保 存" class="result_but success_but">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="page-header">
+                        <h1>
+                            <small>餐品列表</small>
+                        </h1>
                     </div>
-                </h1>
-
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="panel panel-default">
-            <div class="panel-body">
-
-                <div class="myleft">
-                    <form class="form-inline" method="post" id="myform"
-                          action="${pageContext.request.contextPath}/student/update">
-                        <input type="hidden" name="id" value="${student.id}">
-                        <div class="form-group">
-                            <label for="sname">姓名:</label>
-                            <input type="text" class="form-control" id="sname"
-                                   value="${student.sname}" name="sname" />
-                        </div>
-                        <br>
-
-                        <div class="form-group">
-                            <label for="sid">学号:</label>
-                            <input type="text" class="form-control" id="sid"
-                                   value="${student.sid}" name="sid" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="sex">性别:</label>
-                            <select	class="form-control" id="sex" name="sex">
-                                <option value="${student.sex}">${student.sex}</option>
-                                <option value="男">男</option>
-                                <option value="女">女</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="grade">年级:</label>
-                            <input type="text" class="form-control" id="grade"
-                                   value="${student.grade}" placeholder="如:2019" name="grade" />
-                        </div>
-                        <div class="form-group">
-                            <label for="qq">QQ号:</label>
-                            <input type="text" class="form-control" id="qq"
-                                   value="${student.qq}" name="qq" />
-                        </div>
-
-                        <br>
-
-                        <div class="form-group">
-                            <label for="classname">班级:</label>
-                            <input type="text" class="form-control" id="classname"
-                                   value="${student.classname}" placeholder="如:软工2班、大数据1班、java2班" name="classname" />
-                        </div>
-                        <div class="form-group">
-                            <label for="customerName7">手机号:</label>
-                            <input type="text" class="form-control" id="customerName7"
-                                   value="${student.sphone}" name="sphone" />
-                        </div>
-                        <br>
-
-                        <div class="form-group">
-                            <label for="date">生日:</label>
-                            <input type="date" class="form-control" id="date"
-                                   value="${student.date}" name="date" />
-                        </div>
-                        <div class="form-group">
-                            <label for="wechat">微信号:</label>
-                            <input type="text" class="form-control" id="wechat"
-                                   value="${student.wechat}" name="wechat" />
-                        </div>
-
-                        <!-- <button type="submit" class="btn btn-primary">查询</button> -->
-                    </form>
                 </div>
-                <div class="myright"></div>
+
+
 
             </div>
+
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>餐品</th>
+                            <th>价格</th>
+                            <th>数量</th>
+                            <th>学生学号</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="work" items="${workerDishesing}">
+                            <tr class="text-center">
+                                <td>${work.dname}</td>
+                                <td>${work.price}</td>
+                                <td>${work.num}</td>
+                                <td>${work.suid}</td>
+
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
+
     </div>
+
+    <%--</iframe>--%>
 </div>
+
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -205,7 +167,7 @@
     </div><!-- /.modal -->
 </div>
 <%--修改密码模拟框--%>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -236,6 +198,7 @@
         </div>
     </div>
 </div>
+
 <!-- 引入js文件 -->
 <!-- jQuery -->
 <script src="${pageContext.request.getContextPath()}/js/jquery-1.11.3.min.js"></script>
@@ -248,8 +211,5 @@
 <script src="${pageContext.request.getContextPath()}/js/dataTables.bootstrap.min.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="${pageContext.request.getContextPath()}/js/sb-admin-2.js"></script>
-<!-- 编写js代码 -->
-<script src="${pageContext.request.getContextPath()}/js/user/person.js" type="text/javascript"></script>
-
 </body>
 </html>

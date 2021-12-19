@@ -84,7 +84,7 @@
                     <button type="submit" id="mybtn" class="btn btn-primary">提交</button>
                 </div>
                 <div class="form-group mybody_but" >
-                    <div class="myleft_but"><a href="#">忘记密码</a></div>
+                    <div class="myleft_but"><a href="#" data-toggle="modal" data-target="#exampleModal">忘记密码</a></div>
                     <div class="myright_but"><a href="/jsp/register.jsp">注册</a></div>
                 </div>
 
@@ -94,6 +94,21 @@
         <div class="col-xs-6 col-md-4"></div>
     </div>
 
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel1">联系我们</h4>
+            </div>
+            <div class="modal-body">请联系后台人员进行修改<br>邮箱：zhaoyushi00@gmail.com</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 <div class="container">
     <!-- 功能介绍 -->

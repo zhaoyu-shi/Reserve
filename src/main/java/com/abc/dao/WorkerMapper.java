@@ -22,6 +22,8 @@ public interface WorkerMapper {
     int deleteMeal(String mid);
     //根据mid查
     Meal getMealById(String mid);
-    //查看订单
+    //查看已完成订单
     List<Dishes> getWorkerDishes(int wuid);
+    //查看未完成
+    List<Dishes> getWorkerDishesing(int wuid);
 }

@@ -5,6 +5,7 @@ import com.abc.service.StudentService;
 import com.abc.service.UserService;
 import com.abc.service.WorkerService;
 import com.abc.utils.IDutils;
+import org.apache.ibatis.javassist.SerialVersionUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,8 +51,10 @@ public class StudentController {
                     url = "student/person";
                 }
             }
-        }else if (phone.equals("501") && rank != null ){
-            if (password.equals("123")){
+        }else if (userService.getSuperById(phone)!=null && rank != null ){
+            if (userService.getSuperById(phone).getPassword().equals(password)){
+                Super superById = userService.getSuperById(phone);
+                session.setAttribute("super",superById);
                 List<Worker> allWorker = userService.getAllWorker();
                 session.setAttribute("allWorker",allWorker);
                 url = "super/manage";
@@ -121,8 +124,55 @@ public class StudentController {
     @RequestMapping("/getStudentDishes")
     public String getStudentDishes(int suid , HttpSession session){
         List<Dishes> allStudentDishes = studentService.getAllStudentDishes(suid);
+        System.out.println(allStudentDishes);
         session.setAttribute("dishes",allStudentDishes);
         return "student/dishes";
+    }
+
+    @RequestMapping("/toOrder")
+    public String toUpdateMeal(String mid, int suid, HttpSession session){
+        //System.out.println("2222");
+        session.setAttribute("orderMid",suid);
+        Meal maelById = workerService.getMealById(mid);
+        // System.out.println("111");
+        //System.out.println(maelById);
+        session.setAttribute("mealById",maelById);
+        System.out.println(maelById);
+        return "student/order";
+    }
+    @RequestMapping("/order")
+    public String updateMeal(Dishes dishes, HttpSession session){
+        //System.out.println("111");
+        dishes.setDid(IDutils.getId());
+        //System.out.println(dishes);
+        studentService.addDishes(dishes);
+        List<Dishes> allSDishes = studentService.getStudentDishesing(dishes.getSuid());
+        //System.out.println("all+"+allSDishes);
+        /*
+        * 上面的allStudentDishes是集合 控制台也有输出 确实是多个 但是在放在session时却变成了单个的对象
+        * */
+        session.setAttribute("studentDishesing",allSDishes);
+
+        return "student/dishesing";
+    }
+
+    @RequestMapping("/getStudentDishesing")
+    public String getStudentDishesing(int suid , HttpSession session) {
+        List<Dishes> studentDishesing = studentService.getStudentDishesing(suid);
+        System.out.println(studentDishesing);
+        session.setAttribute("studentDishesing", studentDishesing);
+        return "student/dishesing";
+    }
+
+    @RequestMapping("/state")
+    public String state( String did, HttpSession session){
+        // System.out.println("111");
+        // System.out.println(did);
+        studentService.changeState(did);
+        Student student = (Student) session.getAttribute("student");
+        List<Dishes> studentDishesing = studentService.getStudentDishesing(student.getSid());
+        session.setAttribute("studentDishesing", studentDishesing);
+        return "student/dishesing";
     }
 
 }

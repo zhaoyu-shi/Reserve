@@ -80,8 +80,13 @@
                         </a>
                     </li>
                     <li>
+                        <a href="${pageContext.request.getContextPath()}/student/getStudentDishesing?suid=${student.sid}">
+                            <i class="fa fa-hand-stop-o" style="font-size:16px"></i> 未完成的订单
+                        </a>
+                    </li>
+                    <li>
                         <a href="${pageContext.request.getContextPath()}/worker/getWorkerDishes?wuid=${worker.wid}">
-                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 订单查询
+                            <i class="fa fa-thumbs-o-up fa-fw" style="font-size:16px"></i> 已完成订单查询
                         </a>
                     </li>
                     <li>

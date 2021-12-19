@@ -45,4 +45,8 @@ public class WorkerServiceImpl implements WorkerService {
     public List<Dishes> getWorkerDishes(int wuid) {
         return workerMapper.getWorkerDishes(wuid);
     }
+
+    public List<Dishes> getWorkerDishesing(int wuid) {
+        return workerMapper.getWorkerDishesing(wuid);
+    }
 }

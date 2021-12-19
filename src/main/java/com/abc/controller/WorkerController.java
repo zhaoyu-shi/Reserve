@@ -92,6 +92,12 @@ public class WorkerController {
         session.setAttribute("workerDishes",workerDishes);
         return "worker/dishesManage";
     }
+    @RequestMapping("/getWorkerDishesing")
+    public String getWorkerDishesing(int wuid, HttpSession session){
+        List<Dishes> workerDishes = workerService.getWorkerDishesing(wuid);
+        session.setAttribute("workerDishesing",workerDishes);
+        return "worker/dishesingManage";
+    }
 
     /*
      * 采用file.Transto 来保存上传的文件

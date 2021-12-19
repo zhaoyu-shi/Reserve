@@ -24,4 +24,6 @@ public interface WorkerService {
     Meal getMealById(String mid);
     //查看订单
     List<Dishes> getWorkerDishes(int wuid);
+    //查看未完成
+    List<Dishes> getWorkerDishesing(int wuid);
 }
