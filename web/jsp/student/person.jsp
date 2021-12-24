@@ -40,7 +40,7 @@
                     <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-key fa-fw" ></i>修改密码</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#password"><i class="fa fa-key fa-fw" ></i>修改密码</a></li>
                     <li class="divider"></li>
                     <li>
                         <a href="${pageContext.request.contextPath}/student/logout">
@@ -205,7 +205,7 @@
     </div><!-- /.modal -->
 </div>
 <%--修改密码模拟框--%>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

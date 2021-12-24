@@ -197,40 +197,7 @@
     </div><!-- /.modal -->
 </div>
 
-<!-- 增加窗口模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">添加新餐品</h4>
-            </div>
-            <div class="modal-body">
-                <form method="get" action="/worker/upload">
-                    <p class="text-danger"></p>
-                    <div class="myform-group">
-                        <label class="control-label">餐品:</label>
-                        <input name="mname" required="required" type="text" class="form-control" placeholder="请输入" >
-                    </div>
-                    <div class="myform-group">
-                        <label  class="control-label">价格:</label>
-                        <input name="mprice" required="required" type="text" class="form-control" placeholder="请输入" >
-                    </div>
-                    <input type="hidden" name="wmid" value="${worker.wid}">
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="submit" class="btn btn-primary" onclick="add">提交</button>
-                    </div>
-                </form>
 
-            </div>
-
-
-
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 <%--修改密码模拟框--%>
 <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">

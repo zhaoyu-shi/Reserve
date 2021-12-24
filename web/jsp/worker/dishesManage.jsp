@@ -80,7 +80,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.getContextPath()}/student/getStudentDishesing?suid=${student.sid}">
+                        <a href="${pageContext.request.getContextPath()}/worker/getWorkerDishes?wuid=${worker.wid}">
                             <i class="fa fa-hand-stop-o" style="font-size:16px"></i> 未完成的订单
                         </a>
                     </li>
